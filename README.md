@@ -16,7 +16,7 @@ Uncaught SyntaxError: The requested module '../../_snowpack/pkg/react-responsive
 
 ### Issue Two
 
-Snowpack fails to start a dev environment where a monorepo linked package is compiled with [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env)
+Snowpack fails to start a dev environment where a monorepo linked package is transpiled with [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env)
 
 ```
 Uncaught SyntaxError: The requested module '../_snowpack/link/packages/test-one/lib/index.js' does not provide an export named 'HelloWorld'
