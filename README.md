@@ -1,25 +1,19 @@
-# New Project
+# Test Vite
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+This repo demonstrates bundling a React application using [Vite](https://vitejs.dev/) in a yarn monorepo workspace.
 
-## Available Scripts
+[Vite](https://vitejs.dev/) fails to build when a yarn workspace app with local dependencies are transpiled using [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env).
 
-### npm start
+## Reproducible Steps
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
+1. Clone the repo and run `yarn install` at the root directory
+1. Run `yarn packages:build` to build the two workspace packages transpiled with [Babel](https://babeljs.io/) using [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env)
+1. Run `yarn customer dev` or `yarn customer build`
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+The last step would fail to proceed with an error as follows:
 
-### npm run build
+```
+Error: 'makeThunkFetch' is not exported by ../../packages/test-one/lib/index.js, imported by src/App.tsx
+```
 
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
-
-**For the best production performance:** Add a build bundler plugin like "@snowpack/plugin-webpack" to your `snowpack.config.js` config file.
-
-### npm test
-
-Launches the application test runner.
-Run with the `--watch` flag (`npm test -- --watch`) to run in interactive watch mode.
+This error would go away if the packages are transpiled without [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env).
